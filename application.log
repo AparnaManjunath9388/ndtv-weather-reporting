@@ -1,0 +1,4 @@
+2020-09-19 02:30:47,472  INFO [TestNG] EventHandler:160 - From Thread 11: Trying to navigate to url: https://www.ndtv.com/
+2020-09-19 02:30:53,127  INFO [TestNG] EventHandler:82 - From Thread 11: Intended to navigate to url: https://www.ndtv.com/, navigated to: https://www.ndtv.com/
+2020-09-19 02:30:53,131  INFO [TestNG] EventHandler:160 - From Thread 11: Trying to navigate to url: https://www.ndtv.com/
+2020-09-19 02:30:57,210  INFO [TestNG] EventHandler:82 - From Thread 11: Intended to navigate to url: https://www.ndtv.com/, navigated to: https://www.ndtv.com/

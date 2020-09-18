@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="Failed suite [NDTV UI-API Automation]" parallel="tests">
+  <test name="RegressionTests(failed)" parallel="tests">
+    <parameter name="Version" value="85.0.4183.102"/>
+    <parameter name="Browser" value="CHROME"/>
+    <groups>
+      <run>
+        <include name="Regression"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.qa.automation.ndtv.weatherreporting.tests.SimpleTests">
+        <methods>
+          <include name="verifyPageTitle"/>
+          <include name="setupBrowser"/>
+        </methods>
+      </class> <!-- com.qa.automation.ndtv.weatherreporting.tests.SimpleTests -->
+    </classes>
+  </test> <!-- RegressionTests(failed) -->
+</suite> <!-- Failed suite [NDTV UI-API Automation] -->
