@@ -11,6 +11,7 @@
 
     <classes>
 		<class name="com.qa.automation.ndtv.weatherreporting.tests.SimpleTests"/>
+		<class name="com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator"/>
     </classes>
   </test> <!-- RegressionTests -->
 </suite> <!-- Suite -->
