@@ -7,21 +7,17 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePageElements {
 	
-	public static class Notifications {
-		
-		public static Notifications getAllNotifications(WebDriver driver) {
-			return PageFactory.initElements(driver, Notifications.class);
-		}
-		
-		@FindBy(xpath="//*[@id=\"__cricketsubscribe\"]/div[@class=\"noti_wrap\"]")
-		public WebElement home_BreakingNewsAlert;
-	}
-	
 	public static class NavigateTo {
 		
 		public static NavigateTo getNavigateToElements(WebDriver driver) {
 			return PageFactory.initElements(driver, NavigateTo.class);
 		}
+		
+		@FindBy(linkText="WORLD")
+		public WebElement lnk_World;
+		
+		@FindBy(xpath="//*[@class=\"ins_page_header\"]/h1")
+		public WebElement txt_WorldPageHeading;
 		
 	}
 

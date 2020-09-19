@@ -10,9 +10,17 @@
       </run>
     </groups>
     <classes>
+      <class name="com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator">
+        <methods>
+          <include name="navigateToWeatherPage"/>
+          <include name="captureCityWeatherDetails"/>
+          <include name="tearDown"/>
+          <include name="setupBrowser"/>
+        </methods>
+      </class> <!-- com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator -->
       <class name="com.qa.automation.ndtv.weatherreporting.tests.SimpleTests">
         <methods>
-          <include name="verifyPageTitle"/>
+          <include name="tearDown"/>
           <include name="setupBrowser"/>
         </methods>
       </class> <!-- com.qa.automation.ndtv.weatherreporting.tests.SimpleTests -->

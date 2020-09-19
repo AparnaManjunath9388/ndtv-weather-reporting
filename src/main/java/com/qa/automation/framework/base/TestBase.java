@@ -4,8 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
@@ -21,7 +21,7 @@ public class TestBase {
 	private WebDriver driver;
 	WebdriverFactory webDriverFactory;
 	
-	@BeforeMethod(alwaysRun=true)
+	@BeforeClass(alwaysRun=true)
 	@Parameters({"Browser", "Version"})
 	public void setupBrowser(@Optional("") String Browser, @Optional("") String Version) throws Exception {
 		
@@ -41,14 +41,16 @@ public class TestBase {
 	
 	public HomePage openSite() throws Exception {
 		
-		ConfigFileManager configManager = new ConfigFileManager();
-		driver.get(configManager.getAppURL());
-		
-		//driver.switchTo().alert().dismiss();
-		return new HomePage(driver);
+		try {
+			ConfigFileManager configManager = new ConfigFileManager();
+			driver.get(configManager.getAppURL());
+			return new HomePage(driver);
+		} catch(Exception e) {
+			throw e;
+		}
 	}
 	
-	@AfterMethod
+	@AfterClass(alwaysRun=true)
 	public void tearDown() {
 		webDriverFactory.tearDownBrowser();
 	}
