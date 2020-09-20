@@ -4,8 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
@@ -21,9 +22,9 @@ public class TestBase {
 	private WebDriver driver;
 	WebdriverFactory webDriverFactory;
 	
-	@BeforeClass(alwaysRun=true)
+	@BeforeMethod(alwaysRun=true)
 	@Parameters({"Browser", "Version"})
-	public void setupBrowser(@Optional("") String Browser, @Optional("") String Version) throws Exception {
+	public void setupBrowser(@Optional("") ITestContext context, @Optional("") String Browser, @Optional("") String Version) throws Exception {
 		
 		webDriverFactory = new WebdriverFactory();
 		webDriverFactory.setDriver(BrowserType.valueOf(Browser.toUpperCase()), Version);
@@ -36,6 +37,7 @@ public class TestBase {
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(Constants.PAGELOAD_TIMEOUT, TimeUnit.SECONDS);
+		context.setAttribute("WebDriver", driver);
 		
 	}
 	
@@ -50,7 +52,7 @@ public class TestBase {
 		}
 	}
 	
-	@AfterClass(alwaysRun=true)
+	@AfterMethod(alwaysRun=true)
 	public void tearDown() {
 		webDriverFactory.tearDownBrowser();
 	}

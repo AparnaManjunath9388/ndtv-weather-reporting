@@ -64,4 +64,9 @@ public class WeatherPage extends PageBase {
 		return new Weather(WeatherDetails);
 		
 	}
+	
+	public Weather captureCityWeatherDetails(String city) throws Exception {
+		highlightCityWeatherDetails(city);
+		return collectWeatherDetails();
+	}
 }

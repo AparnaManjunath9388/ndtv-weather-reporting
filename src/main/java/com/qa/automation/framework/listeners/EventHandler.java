@@ -1,11 +1,13 @@
 package com.qa.automation.framework.listeners;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class EventHandler implements WebDriverEventListener {
@@ -13,7 +15,7 @@ public class EventHandler implements WebDriverEventListener {
 	private Logger logger;
 	
 	public EventHandler() {
-		logger = Logger.getLogger(EventHandler.class);
+		logger = LoggerFactory.getLogger(EventHandler.class);
 	}
 	
 	@Override

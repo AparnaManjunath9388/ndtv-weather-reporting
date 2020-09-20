@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="NDTV UI-API Automation" duration-ms="62312" started-at="2020-09-19T21:25:53Z" finished-at="2020-09-19T21:26:55Z">
+  <suite name="NDTV UI-API Automation" duration-ms="225374" started-at="2020-09-20T21:15:34Z" finished-at="2020-09-20T21:19:20Z">
     <groups>
       <group name="Regression">
-        <method signature="WeatherComparator.navigateToWeatherPage()[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator@685cb137]" name="navigateToWeatherPage" class="com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator"/>
-        <method signature="WeatherComparator.captureCityWeatherDetails()[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator@685cb137]" name="captureCityWeatherDetails" class="com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator"/>
-        <method signature="SimpleTests.verifyPageTitle()[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.SimpleTests@6a4f787b]" name="verifyPageTitle" class="com.qa.automation.ndtv.weatherreporting.tests.SimpleTests"/>
+        <method signature="SimpleTests.verifyPageTitle(org.json.simple.JSONObject)[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.SimpleTests@2d1ef81a]" name="verifyPageTitle" class="com.qa.automation.ndtv.weatherreporting.tests.SimpleTests"/>
+        <method signature="WeatherComparator.captureWeatherDetailsFromUIAndApi(org.json.simple.JSONObject)[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator@4c402120]" name="captureWeatherDetailsFromUIAndApi" class="com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator"/>
       </group> <!-- Regression -->
     </groups>
-    <test name="RegressionTests" duration-ms="62312" started-at="2020-09-19T21:25:53Z" finished-at="2020-09-19T21:26:55Z">
+    <test name="RegressionTests" duration-ms="225374" started-at="2020-09-20T21:15:34Z" finished-at="2020-09-20T21:19:20Z">
       <class name="com.qa.automation.ndtv.weatherreporting.tests.SimpleTests">
-        <test-method status="PASS" signature="setupBrowser(java.lang.String, java.lang.String)[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.SimpleTests@6a4f787b]" name="setupBrowser" is-config="true" duration-ms="9201" started-at="2020-09-20T02:55:53Z" finished-at="2020-09-20T02:56:02Z">
+        <test-method status="PASS" signature="setupBrowser(java.lang.String, java.lang.String)[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.SimpleTests@2d1ef81a]" name="setupBrowser" is-config="true" duration-ms="9174" started-at="2020-09-21T02:45:35Z" finished-at="2020-09-21T02:45:44Z">
           <params>
             <param index="0">
               <value>
@@ -28,17 +27,24 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupBrowser -->
-        <test-method status="PASS" signature="verifyPageTitle()[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.SimpleTests@6a4f787b]" name="verifyPageTitle" duration-ms="6992" started-at="2020-09-20T02:56:02Z" finished-at="2020-09-20T02:56:09Z">
+        <test-method status="PASS" signature="verifyPageTitle(org.json.simple.JSONObject)[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.SimpleTests@2d1ef81a]" name="verifyPageTitle" duration-ms="89083" started-at="2020-09-21T02:45:44Z" data-provider="TestDataProvider" finished-at="2020-09-21T02:47:13Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{"title":"NDTV: Latest News, India News, Breaking News, Business, Bollywood, Cricket, Videos"}]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyPageTitle -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.SimpleTests@6a4f787b]" name="tearDown" is-config="true" duration-ms="896" started-at="2020-09-20T02:56:09Z" finished-at="2020-09-20T02:56:10Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.SimpleTests@2d1ef81a]" name="tearDown" is-config="true" duration-ms="1340" started-at="2020-09-21T02:47:13Z" finished-at="2020-09-21T02:47:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- com.qa.automation.ndtv.weatherreporting.tests.SimpleTests -->
       <class name="com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator">
-        <test-method status="PASS" signature="setupBrowser(java.lang.String, java.lang.String)[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator@685cb137]" name="setupBrowser" is-config="true" duration-ms="6298" started-at="2020-09-20T02:56:10Z" finished-at="2020-09-20T02:56:17Z">
+        <test-method status="PASS" signature="setupBrowser(java.lang.String, java.lang.String)[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator@4c402120]" name="setupBrowser" is-config="true" duration-ms="13946" started-at="2020-09-21T02:47:14Z" finished-at="2020-09-21T02:47:28Z">
           <params>
             <param index="0">
               <value>
@@ -54,15 +60,18 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupBrowser -->
-        <test-method status="PASS" signature="navigateToWeatherPage()[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator@685cb137]" name="navigateToWeatherPage" duration-ms="36679" started-at="2020-09-20T02:56:17Z" finished-at="2020-09-20T02:56:53Z">
+        <test-method status="PASS" signature="captureWeatherDetailsFromUIAndApi(org.json.simple.JSONObject)[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator@4c402120]" name="captureWeatherDetailsFromUIAndApi" duration-ms="111026" started-at="2020-09-21T02:47:28Z" data-provider="TestDataProvider" finished-at="2020-09-21T02:49:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{"basePath":"\/data\/2.5\/weather","city":"Bengaluru","requestBody":"","baseuri":"https:\/\/openweathermap.org\/","requestParams":{"q":"Bengaluru","appid":"7fe67bf08c80ded756e598d6f8fedaea"},"requestHeader":"","validations":{"Status Line":"HTTP\/1.1 200 OK","Status Code":200,"Content-Length":"<600","Content-Type":"application\/json; charset=utf-8"}}]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- navigateToWeatherPage -->
-        <test-method status="PASS" signature="captureCityWeatherDetails()[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator@685cb137]" name="captureCityWeatherDetails" duration-ms="969" started-at="2020-09-20T02:56:53Z" depends-on-methods="com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator.navigateToWeatherPage" finished-at="2020-09-20T02:56:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- captureCityWeatherDetails -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator@685cb137]" name="tearDown" is-config="true" duration-ms="1069" started-at="2020-09-20T02:56:54Z" finished-at="2020-09-20T02:56:55Z">
+        </test-method> <!-- captureWeatherDetailsFromUIAndApi -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator@4c402120]" name="tearDown" is-config="true" duration-ms="701" started-at="2020-09-21T02:49:19Z" finished-at="2020-09-21T02:49:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

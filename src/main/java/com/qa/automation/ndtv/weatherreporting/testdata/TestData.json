@@ -1,0 +1,31 @@
+  {
+    "verifyPageTitle": [
+      {
+        "title": "NDTV: Latest News, India News, Breaking News, Business, Bollywood, Cricket, Videos"
+      }
+    ],
+    "captureWeatherDetailsFromUIAndApi": [
+      {
+        "city": "Bengaluru",
+		"baseuri": "https://openweathermap.org/",
+        "basePath": "/data/2.5/weather",
+		"requestHeader": "",
+        "requestParams": {
+          "q": "Bengaluru",
+          "appid": "7fe67bf08c80ded756e598d6f8fedaea"
+        },
+		"requestBody": "",
+        "validations": {
+          "Content-Type": "application/json; charset=utf-8",
+          "Content-Length": "<600",
+          "Status Code": 200,
+          "Status Line": "HTTP/1.1 200 OK"
+        }
+      }
+    ]
+  }
+		
+
+
+	
+
