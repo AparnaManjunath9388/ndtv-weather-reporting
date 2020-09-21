@@ -9,7 +9,6 @@ import com.qa.automation.ndtv.weatherreporting.dataproviders.JSONDataProvider;
 
 public class SimpleTests extends TestBase {
 	
-	//@Test(groups="Regression", testName="Verify if the page title is as expected")
 	@Test(groups="Regression", dataProvider="TestDataProvider", dataProviderClass=JSONDataProvider.class)
 	public void verifyPageTitle(JSONObject titleData) throws Throwable {
 		

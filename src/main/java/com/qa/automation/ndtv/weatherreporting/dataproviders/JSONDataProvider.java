@@ -13,6 +13,12 @@ public class JSONDataProvider {
 	
     public static String dataFile = System.getProperty("user.dir")+"\\src\\main\\java\\com\\qa\\automation\\ndtv\\weatherreporting\\testdata\\TestData.json";
     
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: none
+	 * @return: none
+	 * @description: extracts all the data from TestData.json file under com.qa.automation.ndtv.reporting.testdata.TestData.json
+	 */
     public static JSONObject extractData_JSON() throws Throwable {
         FileReader reader = new FileReader(dataFile);
         JSONParser jsonParser = new JSONParser();
@@ -20,6 +26,12 @@ public class JSONDataProvider {
         return (JSONObject) jsonParser.parse(reader);
     }
     
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: method of Type Method
+	 * @return: 2D array of Objects
+	 * @description: filters extracted data to pick on specified method name data (Scenario name), converts them to 2D array of JSONObjects
+	 */
     @DataProvider(name="TestDataProvider")
     public static Object[][] fetchData(Method method) throws Throwable {
 	   JSONArray testData = (JSONArray) extractData_JSON().get(method.getName());

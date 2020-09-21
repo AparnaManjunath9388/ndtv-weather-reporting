@@ -10,12 +10,6 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 public class ExtentManager {
 	
 	    private String reportFileLocation = "";
-	    
-	 
-	    /*public ExtentReports getInstance(String suiteName) {
-	        createInstance(suiteName);
-	        return extent;
-	    }*/
 	 
 	    //Create an extent report instance
 	    public ExtentReports getInstance(String suiteName) {

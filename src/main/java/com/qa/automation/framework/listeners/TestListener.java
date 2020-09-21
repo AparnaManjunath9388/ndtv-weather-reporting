@@ -27,30 +27,30 @@ public class TestListener implements ITestListener {
 	
 	public TestListener() {
 		logger = LoggerFactory.getLogger(TestListener.class);
-		ExtentTestManager = new ExtentTestManager();
+		ExtentTestManager = new ExtentTestManager();			//ExtentReports for individual threads are managed by ExtentTestManager
 	}
 	
 	public void onStart(ITestContext context) {
 		
 		String suiteName = context.getName();
 		logger.info("*** Test Suite " + suiteName + " started ***");
-		ExtentTestManager.createReport(suiteName);
+		ExtentTestManager.createReport(suiteName);			//on suite of a suite in thread1, create a Report and register along with thread Id
 	}
 
 	public void onFinish(ITestContext context) {
 		logger.info(("*** Test Suite " + context.getName() + " ending ***"));
-		ExtentTestManager.endTest();
+		ExtentTestManager.endTest();						//end the test of current thread when suite ends
 		//ExtentManager.getInstance().flush();
 	}
 
 	public void onTestStart(ITestResult result) {
 		logger.info(("From Thread " + Thread.currentThread().getId() + ": *** Running test method " + result.getMethod().getMethodName() + "..."));
-		ExtentTestManager.startTest(result.getMethod().getMethodName());
+		ExtentTestManager.startTest(result.getMethod().getMethodName());			
 	}
 
 	public void onTestSuccess(ITestResult result) {
 		logger.info("From Thread " + Thread.currentThread().getId() + ": *** Executed " + result.getMethod().getMethodName() + " test successfully...");
-		ExtentTestManager.getTest().log(Status.PASS, "Test passed");
+		ExtentTestManager.getTest().log(Status.PASS, "Test passed");		//log pass status to current thread's report
 	}
 
 	/*public void onTestFailure(ITestResult result) {
@@ -75,6 +75,7 @@ public class TestListener implements ITestListener {
 
 		String targetLocation = null;
 
+		//create TestReport and screenshots folders to store report and screenshots
 		String testClassName = result.getInstance().getClass().getName().trim();
 		String timeStamp = LocalDateTime.now().toString().replace(":", "_").replace(".", "_");
 		String testMethodName = result.getName().toString().trim();
@@ -96,9 +97,11 @@ public class TestListener implements ITestListener {
 
 			}
 
+			//take screenshot
 			File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 			targetLocation = reportsPath + fileSeperator + testClassName + fileSeperator + screenShotName;// define
-																											// location
+			
+			//store screenshot in required location
 			File targetFile = new File(targetLocation);
 			logger.info("Screen shot file location - " + screenshotFile.getAbsolutePath());
 			logger.info("Target File location - " + targetFile.getAbsolutePath());

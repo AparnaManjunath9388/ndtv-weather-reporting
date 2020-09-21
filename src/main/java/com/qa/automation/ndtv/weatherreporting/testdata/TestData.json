@@ -4,7 +4,7 @@
         "title": "NDTV: Latest News, India News, Breaking News, Business, Bollywood, Cricket, Videos"
       }
     ],
-    "captureWeatherDetailsFromUIAndApi": [
+    "compareTemperatureFromUIandAPI": [
       {
         "city": "Bengaluru",
 		"RequestDetails": {
