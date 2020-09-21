@@ -8,6 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class WorldPageElements {
 	
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: driver
+	 * @return: class object with instantiated WeElements
+	 * @description: Contains UIMaps of all SelectMenuItem functionality of WorldPage
+	 */
 	public static class SelectMenuItem {
 		
 		public static SelectMenuItem getSelectMenutemsElements(WebDriver driver) {

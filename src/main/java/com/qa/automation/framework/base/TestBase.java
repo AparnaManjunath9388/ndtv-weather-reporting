@@ -1,11 +1,16 @@
 package com.qa.automation.framework.base;
 
+/*
+ * @auth: Aparna Manjunath
+ */
+
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.ITestContext;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
@@ -18,31 +23,48 @@ import com.qa.automation.ndtv.weatherreporting.pages.HomePage;
 
 public class TestBase {
 	
+	//private WebDriver instance and a WebDriverManager to manage WebDriver related actions
 	private WebDriver driver;
 	WebdriverFactory webDriverFactory;
 	
-	@BeforeClass(alwaysRun=true)
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: Browser and version String parameters
+	 * @return: none
+	 * @description: create desired WebDriver instance with browser settings
+	 */
+	@BeforeMethod(alwaysRun=true)
 	@Parameters({"Browser", "Version"})
-	public void setupBrowser(@Optional("") String Browser, @Optional("") String Version) throws Exception {
+	public void setupBrowser(@Optional("") ITestContext context, @Optional("") String Browser, @Optional("") String Version) throws Throwable {
 		
+		//WebDriverFactory util will manage creation and tearing down of WebDriver instance
 		webDriverFactory = new WebdriverFactory();
 		webDriverFactory.setDriver(BrowserType.valueOf(Browser.toUpperCase()), Version);
 		driver = webDriverFactory.getDriver();
 		
+		//registering EventListener
 		EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
 		eventDriver.register(new EventHandler());
 		driver = eventDriver;
 		
+		//some Browser settings
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(Constants.PAGELOAD_TIMEOUT, TimeUnit.SECONDS);
+		context.setAttribute("WebDriver", driver);
 		
 	}
 	
-	public HomePage openSite() throws Exception {
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: none
+	 * @return: HomePage instance
+	 * @description: intial method of Page chaining. Creates HomePage and passes the WebDriver instance to further pages in current test
+	 */
+	public HomePage openSite() throws Throwable {
 		
 		try {
-			ConfigFileManager configManager = new ConfigFileManager();
+			ConfigFileManager configManager = new ConfigFileManager();		//ConfigFileManager util will manage all actions related to config file in /NDTVWeatherReporting/src/main/java/com/qa/automation/framework/config
 			driver.get(configManager.getAppURL());
 			return new HomePage(driver);
 		} catch(Exception e) {
@@ -50,7 +72,13 @@ public class TestBase {
 		}
 	}
 	
-	@AfterClass(alwaysRun=true)
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: none
+	 * @return: none
+	 * @description: teardown of WebDriver instance
+	 */
+	@AfterMethod(alwaysRun=true)
 	public void tearDown() {
 		webDriverFactory.tearDownBrowser();
 	}

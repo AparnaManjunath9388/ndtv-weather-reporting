@@ -1,0 +1,26 @@
+  {
+    "verifyPageTitle": [
+      {
+        "title": "NDTV: Latest News, India News, Breaking News, Business, Bollywood, Cricket, Videos"
+      }
+    ],
+    "compareTemperatureFromUIandAPI": [
+      {
+        "city": "Bengaluru",
+		"RequestDetails": {
+			"httpRequest": "GET",
+			"baseuri": "https://openweathermap.org",
+			"basePath": "/data/2.5/weather",
+			"queryParams": {
+				"q": "Bengaluru",
+				"appid": "7fe67bf08c80ded756e598d6f8fedaea"
+			}
+        },
+		"validations": {
+			"Status Code": 200,
+		},
+		"dataToCaptureFromBody":["main.temp"],
+		"acceptableVariance":2
+      }
+    ]
+  }

@@ -16,7 +16,13 @@ public class WorldPage extends PageBase {
 		commonMethods = new CommonMethods(driver);
 	}
 	
-	public WeatherPage navigateToWeatherPage() throws Exception {
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: none
+	 * @return: new WeatherPage instantiated (Page chaining)
+	 * @description: navigateToWeatherPage2 is called in try-catch to ensure the sync between page content load and operations we perform
+	 */
+	public WeatherPage navigateToWeatherPage() throws Throwable {
 		try {
 			return navigateToWeatherPage2();
 			
@@ -27,12 +33,20 @@ public class WorldPage extends PageBase {
 				throw e;
 		}
 	}
-	 
-	public WeatherPage navigateToWeatherPage2() throws Exception {
+	
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: none
+	 * @return: new WeatherPage instantiated (Page chaining)
+	 * @description: clicks on Top navigation section, clicks on Weather link to navigate to Weather page
+	 */
+	public WeatherPage navigateToWeatherPage2() throws Throwable {
 		
+		//wait for top navigation element to be clickable and then click
 		WebElement topNavigationMenu = WorldPageElements.SelectMenuItem.getSelectMenutemsElements(driver).TopNavigationSection;
 		explicitWait.until(ExpectedConditions.elementToBeClickable(topNavigationMenu)).click();
 		
+		//wait for weather link to be visible, scroll down to view the same and click
 		WebElement lnk_Weather = WorldPageElements.SelectMenuItem.getSelectMenutemsElements(driver).lnk_Weather;
 		explicitWait.until(ExpectedConditions.visibilityOf(lnk_Weather));		
 		commonMethods.scrollToView(lnk_Weather);

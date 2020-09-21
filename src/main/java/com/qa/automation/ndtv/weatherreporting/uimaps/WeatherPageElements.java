@@ -9,6 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class WeatherPageElements {
 	
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: driver
+	 * @return: class object with instantiated WeElements
+	 * @description: Contains UIMaps of all WeatherPageVerification functionality of WeatherPage
+	 */
 	public static class WeatherPageVerification {
 		
 		public static WeatherPageVerification getWeatherPageVerification(WebDriver driver) {
@@ -20,6 +26,12 @@ public class WeatherPageElements {
 		
 	}
 	
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: driver
+	 * @return: class object with instantiated WeElements
+	 * @description: Contains UIMaps of all PinRequiredCity functionality of WeatherPage
+	 */
 	public static class PinRequiredCity {
 		
 		public static PinRequiredCity getPinRequiredCityElements(WebDriver driver) {
@@ -33,6 +45,12 @@ public class WeatherPageElements {
 		public WebElement chkBx_AllCities;
 	}
 	
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: driver
+	 * @return: class object with instantiated WeElements
+	 * @description: Contains UIMaps of all CollectWeatherDetails functionality of WeatherPage
+	 */
 	public static class CollectWeatherDetails {
 		
 		public static CollectWeatherDetails getCollectWeatherDetailsElements(WebDriver driver) {

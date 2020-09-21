@@ -14,10 +14,22 @@ public class CommonMethods extends PageBase {
 		super(driver);
 	}
 	
-	public void clickElement(WebElement elementToClick) throws Exception {		
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: elementToClick WebElement
+	 * @return: none
+	 * @description: waits for the element to be clickable and then clicks on it
+	 */
+	public void clickElement(WebElement elementToClick) throws Throwable {		
 		explicitWait.until(ExpectedConditions.elementToBeClickable(elementToClick)).click();
 	}
 	
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: elementProperty string array containing by string format in [0] and property value in [1]
+	 * @return: By object
+	 * @description: intake String array of element by and property values and return corresponding By object
+	 */
 	public By getBy(String[] elementProperty) throws Exception {
 		
 			String Key = elementProperty[0];
@@ -54,7 +66,13 @@ public class CommonMethods extends PageBase {
 		}
 	}
 	
-	public void scrollToView(WebElement element) throws Exception {
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: element in WebElement format
+	 * @return: none
+	 * @description: scroll down till the element is visibe
+	 */
+	public void scrollToView(WebElement element) throws Throwable {
 		
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].scrollIntoView(true);", element);

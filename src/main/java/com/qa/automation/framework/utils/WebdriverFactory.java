@@ -12,25 +12,33 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class WebdriverFactory {
 
+	//thread-safe WebDriver instance
 	private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	
-	public void setDriver(BrowserType browserName, String version) throws Exception {
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: browserName and version String parameters
+	 * @return: none
+	 * @description: create desired WebDriver instance which is Thread safe with browser settings
+	 */
+	
+	public void setDriver(BrowserType browserName, String version) throws Throwable {
 		switch (browserName) {
 			
 			case CHROME:
 				
 				if (version.isEmpty())
-					WebDriverManager.chromedriver().setup();
+					WebDriverManager.chromedriver().setup();				//io.github.bonigarcia.wdm.WebDriverManager is a utility to automatically download required driver.exe
 				else
-					WebDriverManager.chromedriver().browserVersion(version).setup();
-				driver.set(new ChromeDriver(buildChromeOption()));
+					WebDriverManager.chromedriver().browserVersion(version).setup();		//version can also be specified
+				driver.set(new ChromeDriver(buildChromeOption()));							//buildChromeOption chrome options' internal builder method
 				break;
 				
 			case FIREFOX:
-				if (version.isEmpty())
+				//if (version.isEmpty())
 					WebDriverManager.firefoxdriver().setup();
-				else
-					WebDriverManager.firefoxdriver().browserVersion(version).setup();
+				//else
+					//WebDriverManager.firefoxdriver().browserVersion(version).setup();
 				driver.set(new FirefoxDriver());
 				break;
 				
@@ -41,24 +49,36 @@ public class WebdriverFactory {
 		}
 		
 	}
-	
+
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: none
+	 * @return: WebDriver instance
+	 * @description: return WebDriver instance which is Thread-safe
+	 */
 	public WebDriver getDriver()
 	{
 		return driver.get();
 	}
 	
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: none
+	 * @return: none
+	 * @description: Tears down the current WebDriver instance and removes it from the ThreadLocal list
+	 */
 	public void tearDownBrowser() {
 		driver.get().quit();
 		driver.remove();
 	}
 	
-	public ChromeOptions buildChromeOption() throws Exception {
+	public ChromeOptions buildChromeOption() throws Throwable {
 		
 		ChromeOptions options = new ChromeOptions();
 		options.setAcceptInsecureCerts(true);
 		options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
-		options.addArguments("-disable-notifications");
-		options.setPageLoadStrategy(PageLoadStrategy.EAGER);
+		options.addArguments("-disable-notifications");					//disable all notifications
+		options.setPageLoadStrategy(PageLoadStrategy.EAGER);			//wait for all the page content to get loaded
 		return options;
 	}
 }

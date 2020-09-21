@@ -7,6 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePageElements {
 	
+	/*
+	 * @auth: Aparna Manjunath
+	 * @params: driver
+	 * @return: class object with instantiated WeElements
+	 * @description: Contains UIMaps of all NavigateTo functionality of HomePage
+	 */
 	public static class NavigateTo {
 		
 		public static NavigateTo getNavigateToElements(WebDriver driver) {
