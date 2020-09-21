@@ -2,6 +2,7 @@ package com.qa.automation.framework.utils;
 
 import java.util.HashMap;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.qa.automation.framework.apihandlers.GetHandler;
@@ -10,34 +11,50 @@ import io.restassured.response.Response;
 
 public class APIRequestsProcessor {
 	
-	public Response processRequest(HTTPRequests requestType, JSONObject requestDetails) throws Exception {
+	private Response response;
+	
+	public void processRequest(JSONObject requestDetails) throws Throwable {
 		
+		HTTPRequests requestType = HTTPRequests.valueOf(requestDetails.get("httpRequest").toString().toUpperCase());
 		switch (requestType) {
 			case GET:
-				return GetHandler.SendGetRequest(requestDetails);
+				response = GetHandler.SendGetRequest(requestDetails);
+				break;
 			default:
 				throw new Exception("APIHandler yet to be developed");
 		}
 	}
 	
 	
-	public HashMap<String, String> processRequestAndGet(JSONObject requestDetails, JSONObject jsonPaths, JSONObject validations) throws Exception {
+	public HashMap<String, String> getDataFromBody(JSONArray jsonPaths) throws Throwable {
 		
-		String[] jsonPathsToCapture = jsonPaths.toString().split(",");
+		//String[] jsonPathsToCapture = jsonPaths.toString().split(",");
 		HashMap<String, String> values = new HashMap<String, String>();
-		Response response = processRequest(HTTPRequests.valueOf(requestDetails.get("httpRequest").toString().toUpperCase()), requestDetails);
-		
-		if (validateResponse(validations)) {
+		if (!response.body().equals(null)) {
 			JSONObject responseBody = (JSONObject) response.body();
-			if (!responseBody.isEmpty())
-				for (int i = 0; i<jsonPathsToCapture.length;i++)
-					values.put(jsonPathsToCapture[i], responseBody.get(jsonPathsToCapture[i]).toString());	
+			for (int i = 0; i<jsonPaths.size();i++)
+				values.put(jsonPaths.get(i).toString(), responseBody.get(jsonPaths.get(i).toString()).toString());
 		}
 		return values;
 	}
 	
-	public boolean validateResponse(JSONObject validations) throws Exception {
-		return true;
+	public boolean validateResponse(JSONObject validations) throws Throwable {
+
+		boolean validResponse = true;
+    	for (Object keyStr : validations.keySet()) {
+    		
+    		switch(keyStr.toString().toLowerCase()) {
+    		
+    		case "status code":
+    			if ((long) response.statusCode() != (long) validations.get(keyStr))
+    				validResponse = false;
+    			break;
+    			
+    		default:
+    			throw new Exception("BAD Validation: Validation " + keyStr.toString() + " yet to be implemented");
+    		}
+    	}
+    	return validResponse;
 	}
 
 }

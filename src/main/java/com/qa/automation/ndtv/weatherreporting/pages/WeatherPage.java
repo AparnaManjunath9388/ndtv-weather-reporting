@@ -13,27 +13,28 @@ import com.qa.automation.framework.utils.CustomElementsManager;
 import com.qa.automation.ndtv.weatherreporting.uimaps.WeatherPageElements;
 import com.qa.automation.ndtv.weatherreporting.uimaps.WeatherPageElements.CollectWeatherDetails;
 import com.qa.automation.ndtv.weatherreporting.uimaps.WeatherPageElements.WeatherPageVerification;
-import com.qa.automation.ndtv.weatherreporting.userdefinedclasses.Weather;
+import com.qa.automation.ndtv.weatherreporting.weatherclasses.Weather;
 
 public class WeatherPage extends PageBase {
 
 	private CommonMethods commonMethods;
 	private CustomElementsManager elementsManager;
 	
-	public WeatherPage(WebDriver driver) throws Exception {
+	public WeatherPage(WebDriver driver) throws Throwable {
 		super(driver);
 		commonMethods = new CommonMethods(driver);
 		elementsManager = new CustomElementsManager();
 	}
 	
-	public boolean weatherlogoPresent() throws Exception {
+	public boolean weatherlogoPresent() throws Throwable {
 		WebElement img_logo = WeatherPageVerification.getWeatherPageVerification(driver).img_WeatherLogo;
 		return explicitWait.until(ExpectedConditions.visibilityOf(img_logo)).isDisplayed();
 	}
 	
-	public void pinRequiredCity(String cityName) throws Exception {
+	public void pinRequiredCity(String cityName) throws Throwable {
 		
-		WeatherPageElements.PinRequiredCity.getPinRequiredCityElements(driver).txt_SearchBox.sendKeys(cityName);
+		WebElement txt_SearchBox = WeatherPageElements.PinRequiredCity.getPinRequiredCityElements(driver).txt_SearchBox;
+		explicitWait.until(ExpectedConditions.elementToBeClickable(txt_SearchBox)).sendKeys(cityName);
 		
 		String[] cityCheckBox = elementsManager.getProperty("chkBox_City");
 		cityCheckBox[1] = cityCheckBox[1].replace("cityname", cityName);
@@ -43,14 +44,14 @@ public class WeatherPage extends PageBase {
 			commonMethods.clickElement(chkBox_City);
 	}
 	
-	public void highlightCityWeatherDetails(String cityName) throws Exception {
+	public void highlightCityWeatherDetails(String cityName) throws Throwable {
 		
 		String[] cityTemperature = elementsManager.getProperty("temp_City");
 		cityTemperature[1] = cityTemperature[1].replace("cityname", cityName);
 		commonMethods.clickElement(driver.findElement(commonMethods.getBy(cityTemperature)));
 	}
 	
-	public Weather collectWeatherDetails() throws Exception {
+	public Weather collectWeatherDetails() throws Throwable {
 		
 		WebElement popup_WeatherDetails = CollectWeatherDetails.getCollectWeatherDetailsElements(driver).popup_WeatherDetails;
 		explicitWait.until(ExpectedConditions.visibilityOf(popup_WeatherDetails));
@@ -65,7 +66,8 @@ public class WeatherPage extends PageBase {
 		
 	}
 	
-	public Weather captureCityWeatherDetails(String city) throws Exception {
+	public Weather captureCityWeatherDetails(String city) throws Throwable {
+		pinRequiredCity(city);
 		highlightCityWeatherDetails(city);
 		return collectWeatherDetails();
 	}

@@ -9,7 +9,7 @@ public class ConfigFileManager {
 	private Properties frameworkProperties;
 
 	
-	public ConfigFileManager() throws Exception {
+	public ConfigFileManager() throws Throwable {
 		appProperties = new Properties();
 		appProperties.load(new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\com\\qa\\automation\\framework\\config\\AppConfig.properties"));
 		frameworkProperties = new Properties();
@@ -17,11 +17,11 @@ public class ConfigFileManager {
 			
 	}
 	
-	public String getAppURL() throws Exception {
+	public String getAppURL() throws Throwable {
 		return appProperties.getProperty("AppUrl");
 	}
 
-	public String getHtmlReportsPath() throws Exception {
+	public String getHtmlReportsPath() throws Throwable {
 		return frameworkProperties.getProperty("HtmlReportPath").replace("userdir", System.getProperty("user.dir"));	
 	}
 }

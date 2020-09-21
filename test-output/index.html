@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-NDTV_UI-API_Automation">
-              <span class="suite-name border-passed">NDTV UI-API Automation</span>
+              <span class="suite-name border-failed">NDTV UI-API Automation</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,7 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods,   2 passed</span>
+                    <span class="method-stats">2 methods, 1 failed,   1 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-NDTV_UI-API_Automation" class="hide-methods failed suite-NDTV_UI-API_Automation"> (hide)</a> <!-- hide-methods failed suite-NDTV_UI-API_Automation -->
+                      <a href="#" panel-name="suite-NDTV_UI-API_Automation" class="show-methods failed suite-NDTV_UI-API_Automation"> (show)</a> <!-- show-methods failed suite-NDTV_UI-API_Automation -->
+                    </span>
+                    <div class="method-list-content failed suite-NDTV_UI-API_Automation">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-NDTV_UI-API_Automation" title="com.qa.automation.ndtv.weatherreporting.tests.WeatherReportingTests" hash-for-method="captureWeatherDetailsFromUIAndApi({&quot;dataToCaptureFromBody&quot;:[&quot;main.temp&quot;],&quot;city&quot;:&quot;Bengaluru&quot;,&quot;validations&quot;:{&quot;Status Code&quot;:200},&quot;accepta...)">captureWeatherDetailsFromUIAndApi({"dataToCaptureFromBody":["main.temp"],"city":"Bengaluru","validations":{"Status Code":200},"accepta...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-NDTV_UI-API_Automation -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -100,11 +114,6 @@
                       <a href="#" panel-name="suite-NDTV_UI-API_Automation" class="show-methods passed suite-NDTV_UI-API_Automation"> (show)</a> <!-- show-methods passed suite-NDTV_UI-API_Automation -->
                     </span>
                     <div class="method-list-content passed suite-NDTV_UI-API_Automation">
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-NDTV_UI-API_Automation" title="com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator" hash-for-method="captureWeatherDetailsFromUIAndApi({&quot;basePath&quot;:&quot;\/data\/2.5\/weather&quot;,&quot;city&quot;:&quot;Bengaluru&quot;,&quot;requestBody&quot;:&quot;&quot;,&quot;baseuri&quot;:&quot;https:\/\/openweat...)">captureWeatherDetailsFromUIAndApi({"basePath":"\/data\/2.5\/weather","city":"Bengaluru","requestBody":"","baseuri":"https:\/\/openweat...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-NDTV_UI-API_Automation" title="com.qa.automation.ndtv.weatherreporting.tests.SimpleTests" hash-for-method="verifyPageTitle({&quot;title&quot;:&quot;NDTV: Latest News, India News, Breaking News, Business, Bollywood, Cricket, Videos&quot;})">verifyPageTitle({"title":"NDTV: Latest News, India News, Breaking News, Business, Bollywood, Cricket, Videos"})</a> <!-- method navigator-link -->
@@ -122,6 +131,31 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-NDTV_UI-API_Automation" class="panel NDTV_UI-API_Automation">
+          <div class="suite-NDTV_UI-API_Automation-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.qa.automation.ndtv.weatherreporting.tests.WeatherReportingTests</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="captureWeatherDetailsFromUIAndApi({&quot;dataToCaptureFromBody&quot;:[&quot;main.temp&quot;],&quot;city&quot;:&quot;Bengaluru&quot;,&quot;validations&quot;:{&quot;Status Code&quot;:200},&quot;accepta...)">
+                  </a> <!-- captureWeatherDetailsFromUIAndApi({"dataToCaptureFromBody":["main.temp"],"city":"Bengaluru","validations":{"Status Code":200},"accepta...) -->
+                  <span class="method-name">captureWeatherDetailsFromUIAndApi</span>
+                  <span class="parameters">({"dataToCaptureFromBody":["main.temp"],"city":"Bengaluru","validations":{"Status Code":200},"acceptableVariance":2,"RequestDetails":{"basePath":"\/data\/2.5\/weather","queryParams":{"q":"Bengaluru","appid":"7fe67bf08c80ded756e598d6f8fedaea"},"baseuri":"https:\/\/openweathermap.org","httpRequest":"GET"}})</span>
+                  <div class="stack-trace">java.lang.AssertionError: Exception: Cause- AssertionError, null, Message- The following asserts failed:
+	Failed to get valid response from API
+	at com.qa.automation.ndtv.weatherreporting.tests.WeatherReportingTests.captureWeatherDetailsFromUIAndApi(WeatherReportingTests.java:48)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 17 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-NDTV_UI-API_Automation-class-failed -->
           <div class="suite-NDTV_UI-API_Automation-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -138,22 +172,6 @@
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-NDTV_UI-API_Automation-class-passed -->
-          <div class="suite-NDTV_UI-API_Automation-class-passed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="captureWeatherDetailsFromUIAndApi({&quot;basePath&quot;:&quot;\/data\/2.5\/weather&quot;,&quot;city&quot;:&quot;Bengaluru&quot;,&quot;requestBody&quot;:&quot;&quot;,&quot;baseuri&quot;:&quot;https:\/\/openweat...)">
-                  </a> <!-- captureWeatherDetailsFromUIAndApi({"basePath":"\/data\/2.5\/weather","city":"Bengaluru","requestBody":"","baseuri":"https:\/\/openweat...) -->
-                  <span class="method-name">captureWeatherDetailsFromUIAndApi</span>
-                  <span class="parameters">({"basePath":"\/data\/2.5\/weather","city":"Bengaluru","requestBody":"","baseuri":"https:\/\/openweathermap.org\/","requestParams":{"q":"Bengaluru","appid":"7fe67bf08c80ded756e598d6f8fedaea"},"requestHeader":"","validations":{"Status Line":"HTTP\/1.1 200 OK","Status Code":200,"Content-Length":"<600","Content-Type":"application\/json; charset=utf-8"}})</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-NDTV_UI-API_Automation-class-passed -->
         </div> <!-- panel NDTV_UI-API_Automation -->
         <div panel-name="test-xml-NDTV_UI-API_Automation" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -164,6 +182,9 @@
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite thread-count=&quot;2&quot; name=&quot;NDTV UI-API Automation&quot; parallel=&quot;tests&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;com.qa.automation.framework.listeners.TestListener&quot;/&gt;
+  &lt;/listeners&gt;
   &lt;test name=&quot;RegressionTests&quot;&gt;
     &lt;parameter name=&quot;Version&quot; value=&quot;85.0.4183.102&quot;/&gt;
     &lt;parameter name=&quot;Browser&quot; value=&quot;CHROME&quot;/&gt;
@@ -174,7 +195,7 @@
     &lt;/groups&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.qa.automation.ndtv.weatherreporting.tests.SimpleTests&quot;/&gt;
-      &lt;class name=&quot;com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator&quot;/&gt;
+      &lt;class name=&quot;com.qa.automation.ndtv.weatherreporting.tests.WeatherReportingTests&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- RegressionTests --&gt;
 &lt;/suite&gt; &lt;!-- NDTV UI-API Automation --&gt;
@@ -229,17 +250,17 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'captureWeatherDetailsFromUIAndApi')
-data.setCell(0, 2, 'com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator')
-data.setCell(0, 3, 111026);
+data.setCell(0, 2, 'com.qa.automation.ndtv.weatherreporting.tests.WeatherReportingTests')
+data.setCell(0, 3, 36869);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'verifyPageTitle')
 data.setCell(1, 2, 'com.qa.automation.ndtv.weatherreporting.tests.SimpleTests')
-data.setCell(1, 3, 89083);
+data.setCell(1, 3, 5622);
 window.suiteTableData['NDTV_UI-API_Automation']= { tableData: data, tableDiv: 'times-div-NDTV_UI-API_Automation'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 minutes</span>
+              <span class="suite-total-time">Total running time: 42 seconds</span>
               <div id="times-div-NDTV_UI-API_Automation">
               </div> <!-- times-div-NDTV_UI-API_Automation -->
             </div> <!-- times-div -->
@@ -267,31 +288,33 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.qa.automation.ndtv.weatherreporting.tests.SimpleTests</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
-                <span class="method-name">setupBrowser(CHROME, 85.0.4183.102)</span>
+                <span class="method-name">setupBrowser(org.testng.TestRunner@610694f1, CHROME, 85.0.4183.102)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyPageTitle({"title":"NDTV: Latest News, India News, Breaking News, Business, Bollywood, Cricket, Videos"})</span>
-                <span class="method-start">9174 ms</span>
+                <span class="method-start">9237 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">98261 ms</span>
+                <span class="method-start">14876 ms</span>
               </div> <!-- configuration-method after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
-              <div class="chronological-class-name">com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.qa.automation.ndtv.weatherreporting.tests.WeatherReportingTests</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
-                <span class="method-name">setupBrowser(CHROME, 85.0.4183.102)</span>
-                <span class="method-start">99621 ms</span>
+                <span class="method-name">setupBrowser(org.testng.TestRunner@610694f1, CHROME, 85.0.4183.102)</span>
+                <span class="method-start">16097 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">captureWeatherDetailsFromUIAndApi({"basePath":"\/data\/2.5\/weather","city":"Bengaluru","requestBody":"","baseuri":"https:\/\/openweat...)</span>
-                <span class="method-start">113567 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">captureWeatherDetailsFromUIAndApi({"dataToCaptureFromBody":["main.temp"],"city":"Bengaluru","validations":{"Status Code":200},"accepta...)</span>
+                <span class="method-start">22626 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">224601 ms</span>
+                <span class="method-start">61016 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

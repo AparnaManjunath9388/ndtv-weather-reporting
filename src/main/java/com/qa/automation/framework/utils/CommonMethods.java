@@ -14,7 +14,7 @@ public class CommonMethods extends PageBase {
 		super(driver);
 	}
 	
-	public void clickElement(WebElement elementToClick) throws Exception {		
+	public void clickElement(WebElement elementToClick) throws Throwable {		
 		explicitWait.until(ExpectedConditions.elementToBeClickable(elementToClick)).click();
 	}
 	
@@ -54,7 +54,7 @@ public class CommonMethods extends PageBase {
 		}
 	}
 	
-	public void scrollToView(WebElement element) throws Exception {
+	public void scrollToView(WebElement element) throws Throwable {
 		
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].scrollIntoView(true);", element);

@@ -1,4 +1,4 @@
-package com.qa.automation.ndtv.weatherreporting.userdefinedclasses;
+package com.qa.automation.ndtv.weatherreporting.weatherclasses;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ public final class Weather {
 		
 	}
 	
-	public Weather(HashMap<String, String> details) throws Exception {
+	public Weather(HashMap<String, String> details) throws Throwable {
 		
 		for(Map.Entry<String, String> mapElement : details.entrySet()) {
 			findAndSet(mapElement.getKey().toString(), mapElement.getValue().toString());
@@ -34,7 +34,11 @@ public final class Weather {
 				", Temperature in Degrees: " + this.tempInDegrees + ", Temperature in Fahrenheit: " + this.tempInFahrenheit;
 	}
 	
-	public void findAndSet(String key, String value) throws Exception {
+	public double getTempInDegrees() {
+		return this.tempInDegrees;
+	}
+	
+	public void findAndSet(String key, String value) throws Throwable {
 		
 		switch (key.toLowerCase()) {
 		
@@ -58,10 +62,13 @@ public final class Weather {
 				this.tempInFahrenheit = Double.parseDouble(value);
 				break;
 				
+			case "main.temp":
+				this.tempInDegrees = Double.parseDouble(value) - 273.15;
+				break;
+				
 			default:
 				throw new Exception("Unknown Weather detail");
 		}
 			
 	}
-
 }

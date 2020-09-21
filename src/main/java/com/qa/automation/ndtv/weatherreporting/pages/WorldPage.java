@@ -16,7 +16,7 @@ public class WorldPage extends PageBase {
 		commonMethods = new CommonMethods(driver);
 	}
 	
-	public WeatherPage navigateToWeatherPage() throws Exception {
+	public WeatherPage navigateToWeatherPage() throws Throwable {
 		try {
 			return navigateToWeatherPage2();
 			
@@ -28,7 +28,7 @@ public class WorldPage extends PageBase {
 		}
 	}
 	 
-	public WeatherPage navigateToWeatherPage2() throws Exception {
+	public WeatherPage navigateToWeatherPage2() throws Throwable {
 		
 		WebElement topNavigationMenu = WorldPageElements.SelectMenuItem.getSelectMenutemsElements(driver).TopNavigationSection;
 		explicitWait.until(ExpectedConditions.elementToBeClickable(topNavigationMenu)).click();

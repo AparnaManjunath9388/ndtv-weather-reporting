@@ -24,7 +24,7 @@ public class TestBase {
 	
 	@BeforeMethod(alwaysRun=true)
 	@Parameters({"Browser", "Version"})
-	public void setupBrowser(@Optional("") ITestContext context, @Optional("") String Browser, @Optional("") String Version) throws Exception {
+	public void setupBrowser(@Optional("") ITestContext context, @Optional("") String Browser, @Optional("") String Version) throws Throwable {
 		
 		webDriverFactory = new WebdriverFactory();
 		webDriverFactory.setDriver(BrowserType.valueOf(Browser.toUpperCase()), Version);
@@ -41,7 +41,7 @@ public class TestBase {
 		
 	}
 	
-	public HomePage openSite() throws Exception {
+	public HomePage openSite() throws Throwable {
 		
 		try {
 			ConfigFileManager configManager = new ConfigFileManager();

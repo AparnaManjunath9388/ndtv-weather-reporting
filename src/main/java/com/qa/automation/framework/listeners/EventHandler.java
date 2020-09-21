@@ -177,6 +177,6 @@ public class EventHandler implements WebDriverEventListener {
 
 	@Override
 	public void onException(Throwable arg0, WebDriver arg1) {
-		logger.info("From Thread " + Thread.currentThread().getId() + ": Exception: Cause- " + arg0.getCause() + ", Message- " + arg0.getMessage());
+		logger.info("From Thread " + Thread.currentThread().getId() + ": Exception: Cause- " + arg0.getClass().getSimpleName() + ", " + arg0.getCause() + ", Message- " + arg0.getMessage());
 	}
 }

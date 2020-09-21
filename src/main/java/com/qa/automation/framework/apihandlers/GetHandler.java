@@ -15,22 +15,28 @@ import io.restassured.specification.RequestSpecification;
 public class GetHandler {
 	
 	
-	public static Response SendGetRequest(JSONObject requestDetails) throws Exception {
+	public static Response SendGetRequest(JSONObject requestDetails) throws Throwable {
 
 	    RequestSpecification httpGetRequest = RestAssured.given();
 	    
-	    httpGetRequest.baseUri(requestDetails.get("baseuri").toString());
+	    if (requestDetails.containsKey("baseuri")) { httpGetRequest.baseUri(requestDetails.get("baseuri").toString()); }
+	    else { throw new Exception("BAD JSONObject: JSONObject must contain baseuri Key"); }
 	    
-	    String basePath = requestDetails.get("basePath").toString();
-	    if (!basePath.isEmpty()) { httpGetRequest.basePath(basePath); }
+	    if (requestDetails.containsKey("basePath")) { httpGetRequest.basePath(requestDetails.get("basePath").toString()); }
 	    
-	    Map<String, Object> requestParamsMap = new Gson().fromJson(requestDetails.get("requestParams").toString(), new TypeToken<HashMap<String, Object>>() {}.getType());
-	    if (!requestParamsMap.isEmpty()) { httpGetRequest.params(requestParamsMap); }
+	    if (requestDetails.containsKey("queryParams")) {
+	    	JSONObject queryParams = (JSONObject) requestDetails.get("queryParams");
+	    	for (Object keyStr : queryParams.keySet()) {
+	    		httpGetRequest.queryParam(keyStr.toString(), queryParams.get(keyStr).toString());
+	    	}
+	    } 
 	    
-	    Map<String, Object> requestHeadersMap = new Gson().fromJson(requestDetails.get("requestHeaders").toString(), new TypeToken<HashMap<String, Object>>() {}.getType());
-	    if (!requestHeadersMap.isEmpty()) { httpGetRequest.headers(requestHeadersMap); }
+	    if (requestDetails.containsKey("requestHeaders")) {
+	    	Map<String, Object> requestHeadersMap = new Gson().fromJson(requestDetails.get("requestHeaders").toString(), new TypeToken<HashMap<String, Object>>() {}.getType());
+	    	httpGetRequest.headers(requestHeadersMap);
+	    }
 	    
-		if (!requestDetails.get("requestBody").toString().isEmpty()) { httpGetRequest.body(requestDetails.get("requestBody")); }
+		if (requestDetails.containsKey("requestBody")) { httpGetRequest.body(requestDetails.get("requestBody")); }
 	    
 		return httpGetRequest.when().get();
 		

@@ -10,13 +10,14 @@ import com.qa.automation.ndtv.weatherreporting.dataproviders.JSONDataProvider;
 public class SimpleTests extends TestBase {
 	
 	//@Test(groups="Regression", testName="Verify if the page title is as expected")
-	@Test(groups="Regression", testName="Verify if the page title is as expected", dataProvider="TestDataProvider", dataProviderClass=JSONDataProvider.class)
-	public void verifyPageTitle(JSONObject titleData) throws Exception {
+	@Test(groups="Regression", dataProvider="TestDataProvider", dataProviderClass=JSONDataProvider.class)
+	public void verifyPageTitle(JSONObject titleData) throws Throwable {
 		
 		try {
 			Assert.assertTrue(openSite().getTitle().contains(titleData.get("title").toString()));
 		} catch(Exception e) {
-			throw new Exception(e.getCause() + ": " + e.getMessage() + ". " + e.getStackTrace());
+			Assert.fail("Exception: Cause- " + e.getClass().getSimpleName() + ", " + e.getCause() + ", Message- " + e.getMessage());
+			throw e;
 		}
 	}
 }

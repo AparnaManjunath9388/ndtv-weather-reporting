@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="NDTV UI-API Automation" parallel = "tests" thread-count = "2">
+
+<listeners>
+	<listener class-name="com.qa.automation.framework.listeners.TestListener"/>
+</listeners>
+
   <test name="RegressionTests" preserve-order="true">
     	<parameter name="Browser" value="CHROME"/>
     	<parameter name="Version" value="85.0.4183.102"/>
@@ -10,8 +15,8 @@
   	</groups>
 
     <classes>
-		<class name="com.qa.automation.ndtv.weatherreporting.tests.SimpleTests"/>
-		<class name="com.qa.automation.ndtv.weatherreporting.tests.WeatherComparator"/>
+    	<class name="com.qa.automation.ndtv.weatherreporting.tests.SimpleTests"/>
+		<class name="com.qa.automation.ndtv.weatherreporting.tests.WeatherReportingTests"/>
     </classes>
   </test> <!-- RegressionTests -->
 </suite> <!-- Suite -->

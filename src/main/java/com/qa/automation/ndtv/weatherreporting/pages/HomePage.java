@@ -21,7 +21,7 @@ public class HomePage extends PageBase {
 		}
 	}
 	
-	public WorldPage navigateToWorldPage() throws Exception {
+	public WorldPage navigateToWorldPage() throws Throwable {
 		
 		WebElement lnk_World = HomePageElements.NavigateTo.getNavigateToElements(driver).lnk_World;
 		explicitWait.until(ExpectedConditions.visibilityOf(lnk_World)).click();

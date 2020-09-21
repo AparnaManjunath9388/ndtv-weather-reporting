@@ -1,4 +1,4 @@
-package com.qa.automation.framework.reporting;
+package com.qa.automation.framework.listeners;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,6 +18,7 @@ import org.testng.ITestResult;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
+import com.qa.automation.framework.reporting.ExtentTestManager;
 
 public class TestListener implements ITestListener {
 

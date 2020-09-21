@@ -14,7 +14,7 @@ public class WebdriverFactory {
 
 	private ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
 	
-	public void setDriver(BrowserType browserName, String version) throws Exception {
+	public void setDriver(BrowserType browserName, String version) throws Throwable {
 		switch (browserName) {
 			
 			case CHROME:
@@ -52,7 +52,7 @@ public class WebdriverFactory {
 		driver.remove();
 	}
 	
-	public ChromeOptions buildChromeOption() throws Exception {
+	public ChromeOptions buildChromeOption() throws Throwable {
 		
 		ChromeOptions options = new ChromeOptions();
 		options.setAcceptInsecureCerts(true);

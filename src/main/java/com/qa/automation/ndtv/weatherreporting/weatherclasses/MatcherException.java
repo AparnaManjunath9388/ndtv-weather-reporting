@@ -1,4 +1,4 @@
-package com.qa.automation.ndtv.weatherreporting.userdefinedclasses;
+package com.qa.automation.ndtv.weatherreporting.weatherclasses;
 
 public class MatcherException extends Exception {
 
